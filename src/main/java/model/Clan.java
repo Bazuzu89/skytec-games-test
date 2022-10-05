@@ -11,7 +11,7 @@ public class Clan {
         this.gold = gold;
     }
 
-    public Clan() {git
+    public Clan() {
     }
 
     public long getId() {
