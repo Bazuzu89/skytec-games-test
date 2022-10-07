@@ -5,16 +5,16 @@
       <ServerVersion>14.5</ServerVersion>
     </root>
     <database id="2" parent="1" name="postgres"/>
-    <database id="3" parent="1" name="skytec_task">
+    <database id="3" parent="1" name="user"/>
+    <database id="4" parent="1" name="template1"/>
+    <database id="5" parent="1" name="template0"/>
+    <database id="6" parent="1" name="wallet_auto"/>
+    <database id="7" parent="1" name="skytec_task">
       <Current>1</Current>
     </database>
-    <database id="4" parent="1" name="template0"/>
-    <database id="5" parent="1" name="template1"/>
-    <database id="6" parent="1" name="user"/>
-    <database id="7" parent="1" name="wallet_auto"/>
-    <schema id="8" parent="3" name="information_schema"/>
-    <schema id="9" parent="3" name="pg_catalog"/>
-    <schema id="10" parent="3" name="public">
+    <schema id="8" parent="7" name="information_schema"/>
+    <schema id="9" parent="7" name="pg_catalog"/>
+    <schema id="10" parent="7" name="public">
       <Current>1</Current>
     </schema>
   </database-model>

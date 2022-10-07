@@ -3,9 +3,9 @@ package model;
 public class Clan {
     private long id;
     private String name;
-    private int gold;
+    private long gold;
 
-    public Clan(long id, String name, int gold) {
+    public Clan(long id, String name, long gold) {
         this.id = id;
         this.name = name;
         this.gold = gold;
@@ -30,7 +30,7 @@ public class Clan {
         this.name = name;
     }
 
-    public int getGold() {
+    public long getGold() {
         return gold;
     }
 
