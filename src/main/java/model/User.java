@@ -1,17 +1,25 @@
 package model;
 
-public class Clan {
+public class User {
     private long id;
     private String name;
+
     private long gold;
 
-    public Clan(long id, String name, long gold) {
-        this.id = id;
-        this.name = name;
-        this.gold = gold;
+    public User() {
     }
 
-    public Clan() {
+    public User(long id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    public long getGold() {
+        return gold;
+    }
+
+    public void setGold(long gold) {
+        this.gold = gold;
     }
 
     public long getId() {
@@ -28,13 +36,5 @@ public class Clan {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public long getGold() {
-        return gold;
-    }
-
-    public void setGold(long gold) {
-        this.gold = gold;
     }
 }
