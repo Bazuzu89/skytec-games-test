@@ -5,14 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8c1c7249-11cf-42bc-9347-ceb25c2334b0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/DAO/ClanRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/DAO/ConnectionPool.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/DAO/ConnectionPoolImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/2ed9f15f-b834-40eb-9594-ab922c135e0c.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/2ed9f15f-b834-40eb-9594-ab922c135e0c.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/DAO/Repository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/DAO/TaskRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/DAO/UserRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/exceptions/ClanNotFoundException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/exceptions/NotFoundExcetion.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/Task.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/service/ClanService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/service/ClanServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/service/TaskService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/service/TaskServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/service/UserAddGoldService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/service/UserAddGoldServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/utils/Randomizer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/ClanRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/ClanRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Skytec.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Skytec.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/Clan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Clan.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Skytec.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Skytec.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,6 +73,11 @@
   }
 }</component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="model" />
+      <recent name="exceptions" />
+      <recent name="service" />
+    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="" />
     </key>
@@ -77,7 +92,8 @@
       <updated>1664955843150</updated>
       <workItem from="1664955844983" duration="5655000" />
       <workItem from="1665051338690" duration="1052000" />
-      <workItem from="1665058364129" duration="5501000" />
+      <workItem from="1665058364129" duration="8695000" />
+      <workItem from="1665412961972" duration="10751000" />
     </task>
     <servers />
   </component>
