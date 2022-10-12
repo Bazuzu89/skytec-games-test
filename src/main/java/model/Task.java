@@ -1,5 +1,7 @@
 package model;
 
+import utils.Randomizer;
+
 public class Task {
 
 
@@ -9,8 +11,17 @@ public class Task {
     private String description;
 
     public Task(long id, String description, long gold) {
+        this.id = id;
         this.gold = gold;
         this.description = description;
+    }
+
+    public Task(long gold, String description) {
+        this.gold = gold;
+        this.description = description;
+    }
+
+    public Task() {
     }
 
     public long getId() {
@@ -35,5 +46,11 @@ public class Task {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public static Task createTask() {
+        long gold = Randomizer.generateGoldAmount();
+        String description = String.format("Very interesting task for %d gold", gold);
+        return new Task(gold, description);
     }
 }

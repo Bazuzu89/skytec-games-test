@@ -11,6 +11,11 @@ public class Clan {
         this.gold = gold;
     }
 
+    public Clan(String name, long gold) {
+        this.name = name;
+        this.gold = gold;
+    }
+
     public Clan() {
     }
 

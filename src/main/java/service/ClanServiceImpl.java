@@ -5,7 +5,6 @@ import DAO.Repository;
 import exceptions.NotFoundExcetion;
 import model.Clan;
 
-import java.sql.Connection;
 import java.sql.SQLException;
 
 public class ClanServiceImpl implements ClanService {
@@ -30,7 +29,7 @@ public class ClanServiceImpl implements ClanService {
     }
 
     @Override
-    public boolean save(Clan clan) throws SQLException, NotFoundExcetion {
+    public int save(Clan clan) throws SQLException, NotFoundExcetion {
         return clanRepository.update(clan);
     }
 }

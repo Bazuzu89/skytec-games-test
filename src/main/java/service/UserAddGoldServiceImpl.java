@@ -1,18 +1,24 @@
 package service;
 
+import DAO.Repository;
 import exceptions.NotFoundExcetion;
 import model.Clan;
+import model.Transaction;
+import utils.TransactionActor;
 
 import java.sql.SQLException;
 
 public class UserAddGoldServiceImpl implements UserAddGoldService, Runnable {
     private final ClanService clanService;
+
+    private final Repository<Transaction> transactionRepository;
     private long userId;
     private long clanId;
     private long gold;
 
-    public UserAddGoldServiceImpl(ClanService clanService) {
+    public UserAddGoldServiceImpl(ClanService clanService, Repository<Transaction> transactionRepository) {
         this.clanService = clanService;
+        this.transactionRepository = transactionRepository;
     }
 
     @Override
@@ -20,7 +26,9 @@ public class UserAddGoldServiceImpl implements UserAddGoldService, Runnable {
         Clan clan = clanService.get(clanId);
         clan.setGold(clan.getGold() + gold);
         clanService.save(clan);
-        //TODO logging
+        Transaction transaction = new Transaction(clanId, userId, TransactionActor.USER, gold);
+        transactionRepository.create(transaction);
+        //TODO timestamp
     }
 
     @Override

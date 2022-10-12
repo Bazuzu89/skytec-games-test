@@ -13,14 +13,22 @@ public class Transaction {
     private String description;
 
 
-    public Transaction(long id, long clanId, long actorId, TransactionActor actor, String description, long gold) {
+    public Transaction(long clanId, long actorId, TransactionActor actor, long gold) {
+        this.clanId = clanId;
+        this.actorId = actorId;
+        this.actor = actor;
+        this.gold = gold;
+    }
+
+
+
+    public Transaction(long id, long clanId, long actorId, TransactionActor actor, long gold) {
         this.id = id;
         this.clanId = clanId;
         this.actorId = actorId;
         this.actor = actor;
-        this.description = description;
+        this.gold = gold;
     }
-
     public Transaction() {
     }
 
