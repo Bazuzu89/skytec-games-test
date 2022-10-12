@@ -16,7 +16,7 @@ public class TransactionRepository implements Repository<Transaction> {
 
     @Override
     public long create(Transaction transaction) throws SQLException {
-        String query = "INSERT INTO transaction(description, clanId, actor, actorId) VALUES(?,?,?,?)";
+        String query = "INSERT INTO transaction(description, clanId, actor, actorId, gold) VALUES(?,?,?,?,?)";
         Connection connection;
         try {
             connection = connectionPool.getConnection();
@@ -28,6 +28,7 @@ public class TransactionRepository implements Repository<Transaction> {
         statement.setLong(2, transaction.getClanId());
         statement.setString(3, transaction.getActor().toString());
         statement.setLong(4, transaction.getActorId());
+        statement.setLong(5, transaction.getGold());
         int affectedRows = statement.executeUpdate();
         connectionPool.releaseConnection(connection);
         ResultSet rs = statement.getGeneratedKeys();
@@ -57,13 +58,13 @@ public class TransactionRepository implements Repository<Transaction> {
             return null;
         }
         connectionPool.releaseConnection(connection);
-        return new Transaction(rs.getLong("id"),
+        Transaction transaction = new Transaction(id,
                 rs.getLong("clanId"),
                 rs.getLong("actorId"),
                 TransactionActor.valueOf(rs.getString("actorId")),
-                rs.getString("description"),
                 rs.getLong("gold")
                 );
+        return transaction;
     }
 
     @Override

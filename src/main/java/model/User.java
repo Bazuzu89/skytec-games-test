@@ -6,13 +6,20 @@ public class User {
 
     private long gold;
 
-    public User() {
-    }
+
 
     public User(long id, String name, long gold) {
         this.id = id;
         this.name = name;
         this.gold = gold;
+    }
+
+    public User(String name, long gold) {
+        this.name = name;
+        this.gold = gold;
+    }
+
+    public User() {
     }
 
     public long getGold() {

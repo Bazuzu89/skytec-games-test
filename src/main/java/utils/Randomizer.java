@@ -9,4 +9,8 @@ public class Randomizer {
     public static long generateGoldAmount() {
         return (long) (Math.random() * 100);
     }
+
+    public static long generateClanId() {
+        return (long) (Math.random() * 10 + 1);
+    }
 }

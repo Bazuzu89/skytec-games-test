@@ -1,6 +1,7 @@
 import DAO.*;
 import model.Clan;
 import model.Task;
+import model.Transaction;
 import service.ClanService;
 import service.ClanServiceImpl;
 import service.TaskServiceImpl;
@@ -8,7 +9,6 @@ import service.UserAddGoldServiceImpl;
 import utils.Randomizer;
 
 import java.sql.SQLException;
-import java.util.Collection;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
@@ -29,6 +29,7 @@ public class Skytec {
         }
         Repository<Clan> clanRepository = new ClanRepository(connectionPool);
         Repository<Task> taskRepository = new TaskRepository(connectionPool);
+        Repository<Transaction> transactionRepository = new TransactionRepository(connectionPool);
         ClanService clanService = new ClanServiceImpl(clanRepository);
         ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(10,
                                                                         100,
@@ -38,9 +39,10 @@ public class Skytec {
 
         for (int i = 0; i < 100_000; i++) {
             if (Randomizer.generateBoolean()) {
-                threadPoolExecutor.submit(new TaskServiceImpl(clanService, taskRepository));
+                long clanId = Randomizer.generateClanId();
+                threadPoolExecutor.submit(new TaskServiceImpl(clanService, taskRepository, transactionRepository, clanId));
             } else {
-                threadPoolExecutor.submit(new UserAddGoldServiceImpl(clanService));
+                threadPoolExecutor.submit(new UserAddGoldServiceImpl(clanService, transactionRepository));
             }
         }
     }
