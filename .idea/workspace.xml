@@ -5,24 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8c1c7249-11cf-42bc-9347-ceb25c2334b0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/DAO/Repository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/DAO/TaskRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/DAO/UserRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/exceptions/ClanNotFoundException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/exceptions/NotFoundExcetion.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/model/Task.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/model/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/service/ClanService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/service/ClanServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/service/TaskService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/service/TaskServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/service/UserAddGoldService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/service/UserAddGoldServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/utils/Randomizer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/DAO/TransactionRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/Transaction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/utils/TransactionActor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/DAO/ClanRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/ClanRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/ConnectionPoolImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/ConnectionPoolImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/Repository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/Repository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/TaskRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/TaskRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/UserRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Skytec.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Skytec.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Clan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Clan.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Task.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Task.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/User.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,6 +28,7 @@
       <list>
         <option value="Interface" />
         <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -93,7 +88,11 @@
       <workItem from="1664955844983" duration="5655000" />
       <workItem from="1665051338690" duration="1052000" />
       <workItem from="1665058364129" duration="8695000" />
-      <workItem from="1665412961972" duration="10751000" />
+      <workItem from="1665412961972" duration="11993000" />
+      <workItem from="1665489303291" duration="598000" />
+      <workItem from="1665553050733" duration="1974000" />
+      <workItem from="1665558028830" duration="2836000" />
+      <workItem from="1665568646995" duration="3552000" />
     </task>
     <servers />
   </component>

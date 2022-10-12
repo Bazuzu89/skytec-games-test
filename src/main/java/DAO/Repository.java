@@ -8,6 +8,6 @@ public interface Repository<T> {
 
     long create(T entity) throws SQLException;
     T getById(long id) throws SQLException;
-    boolean update(T entity) throws NotFoundExcetion, SQLException;
+    int update(T entity) throws NotFoundExcetion, SQLException;
     void delete(long id) throws SQLException;
 }

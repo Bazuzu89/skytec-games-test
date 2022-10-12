@@ -49,6 +49,7 @@ public class ConnectionPoolImpl implements ConnectionPool {
                 connectionPool.add(createConnection(url, user, password));
             } else {
                 throw new MaxConnectionsException();
+                //TODO realise waiting for transaction logic
             }
         }
         Connection connection = connectionPool.remove(connectionPool.size() - 1);

@@ -9,9 +9,10 @@ public class User {
     public User() {
     }
 
-    public User(long id, String name) {
+    public User(long id, String name, long gold) {
         this.id = id;
         this.name = name;
+        this.gold = gold;
     }
 
     public long getGold() {
