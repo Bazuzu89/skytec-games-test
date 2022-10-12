@@ -1,6 +1,4 @@
-import DAO.ClanRepository;
-import DAO.Repository;
-import DAO.TaskRepository;
+import DAO.*;
 import model.Clan;
 import model.Task;
 import service.ClanService;
@@ -9,19 +7,28 @@ import service.TaskServiceImpl;
 import service.UserAddGoldServiceImpl;
 import utils.Randomizer;
 
+import java.sql.SQLException;
+import java.util.Collection;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 public class Skytec {
-    private final String password = "postgres";
-    private final String user = "postgres";
-    private final String url = "jdbc:postgresql://localhost:5432/skytec_task";
+    private final static String password = "postgres";
+    private final static String user = "postgres";
+    private final static String url = "jdbc:postgresql://localhost:5432/skytec_task";
 
     public static void main(String[] args) {
         Skytec skytec = new Skytec();
-        Repository<Clan> clanRepository = new ClanRepository();
-        Repository<Task> taskRepository = new TaskRepository();
+        ConnectionPool connectionPool;
+        try {
+            connectionPool = ConnectionPoolImpl.create(url, user, password);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+            //TODO add message
+        }
+        Repository<Clan> clanRepository = new ClanRepository(connectionPool);
+        Repository<Task> taskRepository = new TaskRepository(connectionPool);
         ClanService clanService = new ClanServiceImpl(clanRepository);
         ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(10,
                                                                         100,

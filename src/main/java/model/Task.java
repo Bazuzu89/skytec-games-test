@@ -1,12 +1,24 @@
 package model;
 
 public class Task {
+
+
+
+    private long id;
     private long gold;
     private String description;
 
-    public Task(long gold, String description) {
+    public Task(long id, String description, long gold) {
         this.gold = gold;
         this.description = description;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public long getGold() {

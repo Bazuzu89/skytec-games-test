@@ -2,23 +2,21 @@ package DAO;
 
 import exceptions.MaxConnectionsException;
 import exceptions.NotFoundExcetion;
-import model.Task;
-import model.User;
+import model.Transaction;
+import utils.TransactionActor;
 
 import java.sql.*;
 
-//TODO implement all methods
-public class TaskRepository implements Repository<Task> {
-
+public class TransactionRepository implements Repository<Transaction> {
     ConnectionPool connectionPool;
 
-    public TaskRepository(ConnectionPool connectionPool) {
+    public TransactionRepository(ConnectionPool connectionPool) {
         this.connectionPool = connectionPool;
     }
 
     @Override
-    public long create(Task task) throws SQLException {
-        String query = "INSERT INTO tasks(description, gold) VALUES(?,?)";
+    public long create(Transaction transaction) throws SQLException {
+        String query = "INSERT INTO transaction(description, clanId, actor, actorId) VALUES(?,?,?,?)";
         Connection connection;
         try {
             connection = connectionPool.getConnection();
@@ -26,8 +24,10 @@ public class TaskRepository implements Repository<Task> {
             throw new RuntimeException(e);
         }
         PreparedStatement statement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
-        statement.setString(1, task.getDescription());
-        statement.setLong(2, task.getGold());
+        statement.setString(1, transaction.getDescription());
+        statement.setLong(2, transaction.getClanId());
+        statement.setString(3, transaction.getActor().toString());
+        statement.setLong(4, transaction.getActorId());
         int affectedRows = statement.executeUpdate();
         connectionPool.releaseConnection(connection);
         ResultSet rs = statement.getGeneratedKeys();
@@ -42,8 +42,8 @@ public class TaskRepository implements Repository<Task> {
     }
 
     @Override
-    public Task getById(long id) throws SQLException {
-        String query = "SELCT id, description, gold FROM users WHERE id = ?";
+    public Transaction getById(long id) throws SQLException {
+        String query = "SELCT id, name, gold FROM transactions WHERE id = ?";
         Connection connection;
         try {
             connection = connectionPool.getConnection();
@@ -57,22 +57,26 @@ public class TaskRepository implements Repository<Task> {
             return null;
         }
         connectionPool.releaseConnection(connection);
-        return new Task(rs.getLong("id"),
+        return new Transaction(rs.getLong("id"),
+                rs.getLong("clanId"),
+                rs.getLong("actorId"),
+                TransactionActor.valueOf(rs.getString("actorId")),
                 rs.getString("description"),
-                rs.getLong("gold"));
+                rs.getLong("gold")
+                );
     }
 
     @Override
-    public int update(Task task) throws NotFoundExcetion, SQLException {
-        long id = task.getId();
+    public int update(Transaction transaction) throws NotFoundExcetion, SQLException {
+        long id = transaction.getId();
         try {
             if (getById(id) != null) {
-                String query = "UPDATE tasks SET gold = ?, description = ? WHERE id = ?";
+                String query = "UPDATE transactions SET gold = ?, description = ? WHERE id = ?";
                 Connection connection = connectionPool.getConnection();
                 PreparedStatement statement = connection.prepareStatement(query);
-                statement.setLong(1, task.getGold());
-                statement.setString(2, task.getDescription());
-                statement.setLong(3, id);
+                statement.setLong(1, transaction.getGold());
+                statement.setString(2, transaction.getDescription());
+                statement.setLong(3, transaction.getId());
                 int affectedRows = statement.executeUpdate();
                 connectionPool.releaseConnection(connection);
                 return affectedRows;
@@ -87,7 +91,7 @@ public class TaskRepository implements Repository<Task> {
 
     @Override
     public void delete(long id) throws SQLException {
-        String query = "DELETE FROM tasks WHERE id = ?";
+        String query = "DELETE FROM transactions WHERE id = ?";
         Connection connection;
         try {
             connection = connectionPool.getConnection();
