@@ -24,8 +24,7 @@ public class Skytec {
         try {
             connectionPool = ConnectionPoolImpl.create(url, user, password);
         } catch (SQLException e) {
-            throw new RuntimeException(e);
-            //TODO add message
+            throw new RuntimeException("Failed to create connection to DB!");
         }
         Repository<Clan> clanRepository = new ClanRepository(connectionPool);
         Repository<Task> taskRepository = new TaskRepository(connectionPool);
@@ -33,18 +32,34 @@ public class Skytec {
         ClanService clanService = new ClanServiceImpl(clanRepository);
         ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(10,
                                                                         100,
-                                                                        200,
+                                                                        1000,
                                                                         TimeUnit.MILLISECONDS,
                                                                         new LinkedBlockingQueue<Runnable>());
 
-        for (int i = 0; i < 100_000; i++) {
-            if (Randomizer.generateBoolean()) {
-                long clanId = Randomizer.generateClanId();
-                threadPoolExecutor.submit(new TaskServiceImpl(clanService, taskRepository, transactionRepository, clanId));
-            } else {
-                threadPoolExecutor.submit(new UserAddGoldServiceImpl(clanService, transactionRepository));
+        for (int i = 0; i < 100; i++) {
+            try {
+                taskRepository.create(Task.createTask());
+            } catch (SQLException e) {
+                e.printStackTrace();
             }
         }
+
+        for (int i = 0; i < 100; i++) {
+            long clanId = Randomizer.generateClanId();
+            long userId = Randomizer.generateUserId();
+            long gold = Randomizer.generateGoldAmount();
+            if (Randomizer.generateBoolean()) {
+                threadPoolExecutor.submit(new TaskServiceImpl(clanService, taskRepository, transactionRepository, clanId));
+            } else {
+                threadPoolExecutor.submit(new UserAddGoldServiceImpl(clanService, transactionRepository, userId, clanId, gold));
+            }
+        }
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        threadPoolExecutor.shutdown();
     }
 
 }

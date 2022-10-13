@@ -9,6 +9,7 @@ import utils.Randomizer;
 import utils.TransactionActor;
 
 import java.sql.SQLException;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class TaskServiceImpl implements TaskService, Runnable {
     private final ClanService clanService;
@@ -30,27 +31,25 @@ public class TaskServiceImpl implements TaskService, Runnable {
 
     @Override
     public void completeTask(long clanId, long taskId) throws SQLException, NotFoundExcetion {
-        Clan clan = clanService.get(clanId);
+        Clan clan = new Clan();
         long goldToAdd = taskRepository.getById(taskId).getGold();
-        clan.setGold(clan.getGold() + goldToAdd);
+        clan.setId(clanId);
+        clan.setGold(goldToAdd);
         clanService.save(clan);
         Transaction transaction = new Transaction(clanId, taskId, TransactionActor.TASK, goldToAdd);
         transactionRepository.create(transaction);
-        //TODO timestamp
     }
 
 
     @Override
     public void run() {
         try {
-            if (Randomizer.generateBoolean()) {
-                long taskId = taskRepository.create(Task.createTask());
-                completeTask(clanId, taskId);
-            } else {
-            }
-        } catch (SQLException | NotFoundExcetion e) {
-            //TODO exception handling
-            throw new RuntimeException(e);
+            long taskId = ThreadLocalRandom.current().nextLong(1,100);//taskRepository.create(Task.createTask());
+            completeTask(clanId, taskId);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (NotFoundExcetion e) {
+            System.out.println(e.getMessage());
         }
     }
 }

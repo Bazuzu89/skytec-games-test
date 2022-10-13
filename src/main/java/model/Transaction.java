@@ -8,9 +8,10 @@ public class Transaction {
     private long clanId;
     private long actorId;
     private long gold;
+    private long timestamp;
     private TransactionActor actor;
 
-    private String description;
+
 
 
     public Transaction(long clanId, long actorId, TransactionActor actor, long gold) {
@@ -22,12 +23,13 @@ public class Transaction {
 
 
 
-    public Transaction(long id, long clanId, long actorId, TransactionActor actor, long gold) {
+    public Transaction(long id, long clanId, long actorId, TransactionActor actor, long gold, long timestamp) {
         this.id = id;
         this.clanId = clanId;
         this.actorId = actorId;
         this.actor = actor;
         this.gold = gold;
+        this.timestamp = timestamp;
     }
     public Transaction() {
     }
@@ -58,13 +60,6 @@ public class Transaction {
         this.actor = actor;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
 
     public long getId() {
         return id;
@@ -80,5 +75,13 @@ public class Transaction {
 
     public void setGold(long gold) {
         this.gold = gold;
+    }
+
+    public long getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(long timestamp) {
+        this.timestamp = timestamp;
     }
 }
