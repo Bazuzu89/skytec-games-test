@@ -1,7 +1,6 @@
 package DAO;
 
-import exceptions.MaxConnectionsException;
-import exceptions.NotFoundExcetion;
+import exceptions.NotFoundException;
 import model.Clan;
 
 import java.sql.*;
@@ -35,7 +34,7 @@ public class ClanRepository implements Repository<Clan> {
         return clan;
     }
 
-    public int update(Clan clan) throws SQLException, NotFoundExcetion {
+    public int update(Clan clan) throws SQLException, NotFoundException {
         long id = clan.getId();
             if (getById(id) != null) {
                 try {
@@ -62,7 +61,7 @@ public class ClanRepository implements Repository<Clan> {
                 }
                 return 1;
             } else {
-                throw new NotFoundExcetion(String.format("Clan with id %d is not found in DB", id));
+                throw new NotFoundException(String.format("Clan with id %d is not found in DB", id));
             }
     }
 
