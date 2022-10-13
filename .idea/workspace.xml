@@ -5,24 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8c1c7249-11cf-42bc-9347-ceb25c2334b0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/exceptions/NotFoundException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/ClanRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/ClanRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/ConnectionPool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/ConnectionPool.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/ConnectionPoolImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/ConnectionPoolImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/Repository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/Repository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/TaskRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/TaskRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/TransactionRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/TransactionRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Skytec.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Skytec.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/exceptions/MaxConnectionsException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/exceptions/NotFoundExcetion.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/service/ClanService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/ClanService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/service/ClanServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/ClanServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/service/TaskService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/TaskService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/service/TaskServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/TaskServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/service/UserAddGoldService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/UserAddGoldService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/service/UserAddGoldServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/UserAddGoldServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,8 +50,8 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0"
+    "project.structure.proportion": "0.21875",
+    "project.structure.side.proportion": "0.2581581"
   },
   "keyToStringList": {
     "DatabaseDriversLRU": [
@@ -105,7 +88,7 @@
       <workItem from="1665585026347" duration="3087000" />
       <workItem from="1665599651480" duration="1332000" />
       <workItem from="1665601239430" duration="16031000" />
-      <workItem from="1665653511834" duration="36471000" />
+      <workItem from="1665653511834" duration="37644000" />
     </task>
     <servers />
   </component>
