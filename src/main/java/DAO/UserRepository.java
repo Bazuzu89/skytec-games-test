@@ -1,7 +1,6 @@
 package DAO;
 
-import exceptions.MaxConnectionsException;
-import exceptions.NotFoundExcetion;
+import exceptions.NotFoundException;
 import model.User;
 
 import java.sql.*;
@@ -55,7 +54,7 @@ public class UserRepository implements Repository<User> {
     }
 
     @Override
-    public int update(User user) throws NotFoundExcetion, SQLException {
+    public int update(User user) throws NotFoundException, SQLException {
         long id = user.getId();
         if (getById(id) != null) {
             String query = "UPDATE users SET gold = ? WHERE id = ?";
@@ -68,7 +67,7 @@ public class UserRepository implements Repository<User> {
             connectionPool.releaseConnection(connection);
             return affectedRows;
         } else {
-            throw new NotFoundExcetion(String.format("User with id %d is not found in DB", id));
+            throw new NotFoundException(String.format("User with id %d is not found in DB", id));
         }
     }
 

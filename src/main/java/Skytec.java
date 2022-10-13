@@ -19,7 +19,6 @@ public class Skytec {
     private final static String url = "jdbc:postgresql://localhost:5432/skytec_task";
 
     public static void main(String[] args) {
-        Skytec skytec = new Skytec();
         ConnectionPool connectionPool;
         try {
             connectionPool = ConnectionPoolImpl.create(url, user, password);
@@ -30,7 +29,7 @@ public class Skytec {
         Repository<Task> taskRepository = new TaskRepository(connectionPool);
         Repository<Transaction> transactionRepository = new TransactionRepository(connectionPool);
         ClanService clanService = new ClanServiceImpl(clanRepository);
-        ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(10,
+        ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(100,
                                                                         100,
                                                                         1000,
                                                                         TimeUnit.MILLISECONDS,
@@ -44,7 +43,7 @@ public class Skytec {
             }
         }
 
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 10_000; i++) {
             long clanId = Randomizer.generateClanId();
             long userId = Randomizer.generateUserId();
             long gold = Randomizer.generateGoldAmount();
@@ -54,11 +53,7 @@ public class Skytec {
                 threadPoolExecutor.submit(new UserAddGoldServiceImpl(clanService, transactionRepository, userId, clanId, gold));
             }
         }
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+
         threadPoolExecutor.shutdown();
     }
 

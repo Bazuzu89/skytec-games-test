@@ -1,10 +1,10 @@
 package service;
 
-import exceptions.NotFoundExcetion;
+import exceptions.NotFoundException;
 
 import java.sql.SQLException;
 
 public interface UserAddGoldService {
 
-    void addGoldToClan(long userId, long clanId, long gold) throws SQLException, NotFoundExcetion;
+    void addGoldToClan(long userId, long clanId, long gold) throws SQLException, NotFoundException;
 }

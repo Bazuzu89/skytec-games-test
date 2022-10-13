@@ -1,9 +1,7 @@
 package DAO;
 
-import exceptions.MaxConnectionsException;
-import exceptions.NotFoundExcetion;
+import exceptions.NotFoundException;
 import model.Task;
-import model.User;
 
 import java.sql.*;
 
@@ -56,7 +54,7 @@ public class TaskRepository implements Repository<Task> {
     }
 
     @Override
-    public int update(Task task) throws NotFoundExcetion, SQLException {
+    public int update(Task task) throws NotFoundException, SQLException {
         long id = task.getId();
         if (getById(id) != null) {
             String query = "UPDATE tasks SET gold = ?, description = ? WHERE id = ?";
@@ -70,7 +68,7 @@ public class TaskRepository implements Repository<Task> {
             connectionPool.releaseConnection(connection);
             return affectedRows;
         } else {
-            throw new NotFoundExcetion(String.format("Task with id %d is not found in DB", id));
+            throw new NotFoundException(String.format("Task with id %d is not found in DB", id));
         }
     }
 

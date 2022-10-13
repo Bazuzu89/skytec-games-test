@@ -1,7 +1,7 @@
 package service;
 
 import DAO.Repository;
-import exceptions.NotFoundExcetion;
+import exceptions.NotFoundException;
 import model.Clan;
 import model.Transaction;
 import utils.TransactionActor;
@@ -25,7 +25,7 @@ public class UserAddGoldServiceImpl implements UserAddGoldService, Runnable {
     }
 
     @Override
-    public void addGoldToClan(long userId, long clanId, long gold) throws SQLException, NotFoundExcetion {
+    public void addGoldToClan(long userId, long clanId, long gold) throws SQLException, NotFoundException {
         Clan clan = new Clan();
         clan.setGold(gold);
         clan.setId(clanId);
@@ -40,7 +40,7 @@ public class UserAddGoldServiceImpl implements UserAddGoldService, Runnable {
             addGoldToClan(userId, clanId, gold);
         } catch (SQLException e) {
             e.printStackTrace();
-        } catch (NotFoundExcetion e) {
+        } catch (NotFoundException e) {
             System.out.println(e.getMessage());
         }
     }

@@ -1,13 +1,11 @@
 package DAO;
 
-import exceptions.MaxConnectionsException;
-import exceptions.NotFoundExcetion;
+import exceptions.NotFoundException;
 import model.Transaction;
 import utils.TransactionActor;
 
 import java.sql.*;
 import java.time.Instant;
-import java.time.LocalDateTime;
 
 public class TransactionRepository implements Repository<Transaction> {
     ConnectionPool connectionPool;
@@ -20,11 +18,7 @@ public class TransactionRepository implements Repository<Transaction> {
     public long create(Transaction transaction) throws SQLException {
         String query = "INSERT INTO transactions(clanId, actor, actorId, gold, timestamp) VALUES(?,?,?,?,?)";
         Connection connection;
-        try {
-            connection = connectionPool.getConnection();
-        } catch (MaxConnectionsException e) {
-            throw new RuntimeException(e);
-        }
+        connection = connectionPool.getConnection();
         PreparedStatement statement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
         statement.setLong(1, transaction.getClanId());
         statement.setString(2, transaction.getActor().toString());
@@ -49,11 +43,7 @@ public class TransactionRepository implements Repository<Transaction> {
     public Transaction getById(long id) throws SQLException {
         String query = "SELECT id, name, gold FROM transactions WHERE id = ?";
         Connection connection;
-        try {
-            connection = connectionPool.getConnection();
-        } catch (MaxConnectionsException e) {
-            throw new RuntimeException(e);
-        }
+        connection = connectionPool.getConnection();
         PreparedStatement statement = connection.prepareStatement(query);
         statement.setLong(1, id);
         ResultSet rs = statement.executeQuery();
@@ -73,7 +63,7 @@ public class TransactionRepository implements Repository<Transaction> {
     }
 
     @Override
-    public int update(Transaction entity) throws NotFoundExcetion, SQLException {
+    public int update(Transaction entity) throws NotFoundException, SQLException {
         return 0;
     }
 
@@ -81,15 +71,11 @@ public class TransactionRepository implements Repository<Transaction> {
     public void delete(long id) throws SQLException {
         String query = "DELETE FROM transactions WHERE id = ?";
         Connection connection;
-        try {
-            connection = connectionPool.getConnection();
-            PreparedStatement statement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
-            statement.setLong(1, id);
-            statement.executeUpdate();
-            connection.commit();
-            connectionPool.releaseConnection(connection);
-        } catch (MaxConnectionsException e) {
-            throw new RuntimeException(e);
-        }
+        connection = connectionPool.getConnection();
+        PreparedStatement statement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+        statement.setLong(1, id);
+        statement.executeUpdate();
+        connection.commit();
+        connectionPool.releaseConnection(connection);
     }
 }

@@ -1,11 +1,10 @@
 package service;
 
 import DAO.Repository;
-import exceptions.NotFoundExcetion;
+import exceptions.NotFoundException;
 import model.Clan;
 import model.Task;
 import model.Transaction;
-import utils.Randomizer;
 import utils.TransactionActor;
 
 import java.sql.SQLException;
@@ -30,7 +29,7 @@ public class TaskServiceImpl implements TaskService, Runnable {
 
 
     @Override
-    public void completeTask(long clanId, long taskId) throws SQLException, NotFoundExcetion {
+    public void completeTask(long clanId, long taskId) throws SQLException, NotFoundException {
         Clan clan = new Clan();
         long goldToAdd = taskRepository.getById(taskId).getGold();
         clan.setId(clanId);
@@ -48,7 +47,7 @@ public class TaskServiceImpl implements TaskService, Runnable {
             completeTask(clanId, taskId);
         } catch (SQLException e) {
             e.printStackTrace();
-        } catch (NotFoundExcetion e) {
+        } catch (NotFoundException e) {
             System.out.println(e.getMessage());
         }
     }

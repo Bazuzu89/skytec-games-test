@@ -1,6 +1,5 @@
 package DAO;
 
-import exceptions.MaxConnectionsException;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -16,7 +15,7 @@ public class ConnectionPoolImpl implements ConnectionPool {
     private List<Connection> connectionPool;
     private List<Connection> connectionsInUse = new ArrayList<>();
     private static int INITIAL_POOL_SIZE = 10;
-    private static int MAX_POOL_SIZE = 100;
+    private static int MAX_POOL_SIZE = 90;
 
     public ConnectionPoolImpl(String url, String user, String password, List<Connection> pool) {
         this.connectionPool = pool;
@@ -73,7 +72,9 @@ public class ConnectionPoolImpl implements ConnectionPool {
 
     @Override
     public boolean releaseConnection(Connection connection) {
-        connectionPool.add(connection);
+        synchronized (this) {
+            connectionPool.add(connection);
+        }
         return connectionsInUse.remove(connection);
     }
 

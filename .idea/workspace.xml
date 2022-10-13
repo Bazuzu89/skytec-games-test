@@ -5,22 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8c1c7249-11cf-42bc-9347-ceb25c2334b0" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/2ed9f15f-b834-40eb-9594-ab922c135e0c.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/2ed9f15f-b834-40eb-9594-ab922c135e0c.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/exceptions/NotFoundException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/DAO/ClanRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/ClanRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/DAO/ConnectionPool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/ConnectionPool.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/DAO/ConnectionPoolImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/ConnectionPoolImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/Repository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/Repository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/DAO/TaskRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/TaskRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/DAO/TransactionRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/TransactionRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/DAO/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/UserRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Skytec.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Skytec.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/exceptions/ClanNotFoundException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/exceptions/NotFoundExcetion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/exceptions/NotFoundExcetion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Transaction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/exceptions/MaxConnectionsException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/exceptions/NotFoundExcetion.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/ClanService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/ClanService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/service/ClanServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/ClanServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/TaskService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/TaskService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/service/TaskServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/TaskServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/UserAddGoldService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/UserAddGoldService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/service/UserAddGoldServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/UserAddGoldServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utils/Randomizer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/Randomizer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,24 +55,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;postgresql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="model" />
@@ -100,7 +105,7 @@
       <workItem from="1665585026347" duration="3087000" />
       <workItem from="1665599651480" duration="1332000" />
       <workItem from="1665601239430" duration="16031000" />
-      <workItem from="1665653511834" duration="31045000" />
+      <workItem from="1665653511834" duration="36471000" />
     </task>
     <servers />
   </component>
