@@ -26,6 +26,7 @@ public class ClanServiceImpl implements ClanService {
     @Override
     public Clan get(long id) throws SQLException {
         return clanRepository.getById(id);
+
     }
 
     @Override

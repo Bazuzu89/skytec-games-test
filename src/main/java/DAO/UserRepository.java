@@ -6,7 +6,6 @@ import model.User;
 
 import java.sql.*;
 
-//TODO implement all methods
 public class UserRepository implements Repository<User> {
 
     private ConnectionPool connectionPool;
@@ -19,15 +18,12 @@ public class UserRepository implements Repository<User> {
     public long create(User user) throws SQLException {
         String query = "INSERT INTO users(gold, name) VALUES(?,?)";
         Connection connection;
-        try {
-            connection = connectionPool.getConnection();
-        } catch (MaxConnectionsException e) {
-            throw new RuntimeException(e);
-        }
+        connection = connectionPool.getConnection();
         PreparedStatement statement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
         statement.setLong(1, user.getGold());
         statement.setString(2, user.getName());
         int affectedRows = statement.executeUpdate();
+        connection.commit();
         connectionPool.releaseConnection(connection);
         ResultSet rs = statement.getGeneratedKeys();
         long id;
@@ -42,19 +38,16 @@ public class UserRepository implements Repository<User> {
 
     @Override
     public User getById(long id) throws SQLException {
-        String query = "SELCT id, name, gold FROM users WHERE id = ?";
+        String query = "SELECT id, name, gold FROM users WHERE id = ?";
         Connection connection;
-        try {
-            connection = connectionPool.getConnection();
-        } catch (MaxConnectionsException e) {
-            throw new RuntimeException(e);
-        }
+        connection = connectionPool.getConnection();
         PreparedStatement statement = connection.prepareStatement(query);
         statement.setLong(1, id);
         ResultSet rs = statement.executeQuery();
         if (!rs.next()) {
             return null;
         }
+        connection.commit();
         connectionPool.releaseConnection(connection);
         return new User(rs.getLong("id"),
                 rs.getString("name"),
@@ -64,22 +57,18 @@ public class UserRepository implements Repository<User> {
     @Override
     public int update(User user) throws NotFoundExcetion, SQLException {
         long id = user.getId();
-        try {
-            if (getById(id) != null) {
-                String query = "UPDATE users SET gold = ? WHERE id = ?";
-                Connection connection = connectionPool.getConnection();
-                PreparedStatement statement = connection.prepareStatement(query);
-                statement.setLong(1, user.getGold());
-                statement.setLong(2, id);
-                int affectedRows = statement.executeUpdate();
-                connectionPool.releaseConnection(connection);
-                return affectedRows;
-            } else {
-                throw new NotFoundExcetion();
-                //TODO pass the message with the exception
-            }
-        } catch (MaxConnectionsException e) {
-            throw new RuntimeException(e);
+        if (getById(id) != null) {
+            String query = "UPDATE users SET gold = ? WHERE id = ?";
+            Connection connection = connectionPool.getConnection();
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setLong(1, user.getGold());
+            statement.setLong(2, id);
+            int affectedRows = statement.executeUpdate();
+            connection.commit();
+            connectionPool.releaseConnection(connection);
+            return affectedRows;
+        } else {
+            throw new NotFoundExcetion(String.format("User with id %d is not found in DB", id));
         }
     }
 
@@ -87,14 +76,11 @@ public class UserRepository implements Repository<User> {
     public void delete(long id) throws SQLException {
         String query = "DELETE FROM users WHERE id = ?";
         Connection connection;
-        try {
-            connection = connectionPool.getConnection();
-            PreparedStatement statement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
-            statement.setLong(1, id);
-            statement.executeUpdate();
-            connectionPool.releaseConnection(connection);
-        } catch (MaxConnectionsException e) {
-            throw new RuntimeException(e);
-        }
+        connection = connectionPool.getConnection();
+        PreparedStatement statement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+        statement.setLong(1, id);
+        statement.executeUpdate();
+        connection.commit();
+        connectionPool.releaseConnection(connection);
     }
 }

@@ -5,14 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8c1c7249-11cf-42bc-9347-ceb25c2334b0" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/2ed9f15f-b834-40eb-9594-ab922c135e0c.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/2ed9f15f-b834-40eb-9594-ab922c135e0c.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/ClanRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/ClanRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/ConnectionPool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/ConnectionPool.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/ConnectionPoolImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/ConnectionPoolImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/TaskRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/TaskRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/DAO/TransactionRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/TransactionRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/UserRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Skytec.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Skytec.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Clan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Clan.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Task.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Task.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/exceptions/ClanNotFoundException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/exceptions/NotFoundExcetion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/exceptions/NotFoundExcetion.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Transaction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/service/ClanService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/ClanService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/service/ClanServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/ClanServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/service/TaskServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/TaskServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/service/UserAddGoldServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/UserAddGoldServiceImpl.java" afterDir="false" />
@@ -93,7 +97,10 @@
       <workItem from="1665553050733" duration="1974000" />
       <workItem from="1665558028830" duration="2836000" />
       <workItem from="1665568646995" duration="7071000" />
-      <workItem from="1665585026347" duration="1724000" />
+      <workItem from="1665585026347" duration="3087000" />
+      <workItem from="1665599651480" duration="1332000" />
+      <workItem from="1665601239430" duration="16031000" />
+      <workItem from="1665653511834" duration="31045000" />
     </task>
     <servers />
   </component>
@@ -110,5 +117,16 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/service/UserAddGoldServiceImpl.java</url>
+          <line>39</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

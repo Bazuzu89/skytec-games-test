@@ -16,28 +16,32 @@ public class UserAddGoldServiceImpl implements UserAddGoldService, Runnable {
     private long clanId;
     private long gold;
 
-    public UserAddGoldServiceImpl(ClanService clanService, Repository<Transaction> transactionRepository) {
+    public UserAddGoldServiceImpl(ClanService clanService, Repository<Transaction> transactionRepository, long userId, long clanId, long gold) {
         this.clanService = clanService;
         this.transactionRepository = transactionRepository;
+        this.userId = userId;
+        this.clanId = clanId;
+        this.gold = gold;
     }
 
     @Override
     public void addGoldToClan(long userId, long clanId, long gold) throws SQLException, NotFoundExcetion {
-        Clan clan = clanService.get(clanId);
-        clan.setGold(clan.getGold() + gold);
+        Clan clan = new Clan();
+        clan.setGold(gold);
+        clan.setId(clanId);
         clanService.save(clan);
         Transaction transaction = new Transaction(clanId, userId, TransactionActor.USER, gold);
         transactionRepository.create(transaction);
-        //TODO timestamp
     }
 
     @Override
     public void run() {
         try {
             addGoldToClan(userId, clanId, gold);
-        } catch (SQLException | NotFoundExcetion e) {
-            //TODO exception handling
-            throw new RuntimeException(e);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (NotFoundExcetion e) {
+            System.out.println(e.getMessage());
         }
     }
 }

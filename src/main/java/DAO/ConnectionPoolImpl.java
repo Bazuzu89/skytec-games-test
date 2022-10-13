@@ -39,21 +39,35 @@ public class ConnectionPoolImpl implements ConnectionPool {
     private static Connection createConnection(String url,
                                                String user,
                                                String password) throws SQLException {
-        return DriverManager.getConnection(url, user, password);
+        Connection connection = DriverManager.getConnection(url, user, password);
+        connection.setAutoCommit(false);
+        return connection;
     }
 
     @Override
-    public Connection getConnection() throws SQLException, MaxConnectionsException {
-        if (connectionPool.isEmpty()) {
-            if (connectionsInUse.size() < MAX_POOL_SIZE) {
-                connectionPool.add(createConnection(url, user, password));
-            } else {
-                throw new MaxConnectionsException();
-                //TODO realise waiting for transaction logic
+    public Connection getConnection() throws SQLException {
+        Connection connection = null;
+        do {
+            synchronized (this) {
+                if (connectionPool.isEmpty()) {
+                    if (connectionsInUse.size() < MAX_POOL_SIZE) {
+                        connectionPool.add(createConnection(url, user, password));
+                        connection = connectionPool.remove(connectionPool.size() - 1);
+                        connectionsInUse.add(connection);
+                    }
+                } else {
+                    connection = connectionPool.remove(connectionPool.size() - 1);
+                    connectionsInUse.add(connection);
+                }
             }
-        }
-        Connection connection = connectionPool.remove(connectionPool.size() - 1);
-        connectionsInUse.add(connection);
+            if (connection == null) {
+                try {
+                    Thread.sleep(100);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        } while (connection == null);
         return connection;
     }
 
