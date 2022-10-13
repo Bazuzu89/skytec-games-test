@@ -1,0 +1,44 @@
+DROP TABLE IF EXISTS tasks;
+
+CREATE TABLE tasks
+(
+    id             BIGINT GENERATED ALWAYS AS IDENTITY,
+    description    text NULL,
+    gold           INT NULL,
+    PRIMARY KEY (id)
+);
+
+DROP TABLE IF EXISTS transactions;
+
+CREATE TABLE transactions
+(
+    id             BIGINT GENERATED ALWAYS AS IDENTITY,
+    clanId    INT NOT NULL,
+    actorId           INT NOT NULL,
+	actor           VARCHAR(15) NOT NULL,
+	gold    INT NOT NULL,
+	timestamp BIGINT NOT NULL,
+    PRIMARY KEY (id)
+);
+
+DROP TABLE IF EXISTS clans;
+
+CREATE TABLE clans
+(
+    id             BIGINT GENERATED ALWAYS AS IDENTITY,
+    name           VARCHAR(12) NULL,
+    gold           INT NULL,
+    PRIMARY KEY (id)
+);
+
+INSERT INTO clans(name, gold)
+VALUES ('Ниус', 0)
+     , ('Никрашш', 0)
+     , ('Эззэссэль', 0)
+     , ('Бэлан', 0)
+     , ('Элеонора', 0)
+     , ('Эман', 0)
+     , ('Талан', 0)
+     , ('Арилан', 0)
+     , ('Деракт', 0)
+     , ('Архилл', 0);
